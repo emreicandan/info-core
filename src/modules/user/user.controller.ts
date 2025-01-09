@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, Res } from '@nestjs/common';
 import { UserService } from './user.service';
-import { IUser } from 'tools/models/user';
+import { IUser } from 'src/tools/models/user';
 import { Response } from 'express';
 import { HttpStatus } from '@nestjs/common';
 
