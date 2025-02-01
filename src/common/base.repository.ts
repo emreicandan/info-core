@@ -13,7 +13,6 @@ export class BaseRepository<T extends Document> implements IBaseRepository<T> {
     } = {}): Promise<T[]> {
         const { filter = {}, sort, pagination, relation } = queryParams;
         let queryBuilder = this.model.find(filter);
-
         if (relation) {
             relation.forEach(rel=>{
                 queryBuilder = queryBuilder.populate(rel)

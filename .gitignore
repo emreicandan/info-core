@@ -12,6 +12,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Environment files
+/src/environment/env.ts
+
 # OS
 .DS_Store
 
