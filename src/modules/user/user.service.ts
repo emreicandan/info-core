@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
 import { IUser } from 'src/models/user';
 import { UserRepository } from './user.repository';
-import { BaseService } from 'src/common/base.service';
+import { BaseService } from '../../common/base.service';
 
 
 @Injectable()

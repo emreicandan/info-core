@@ -4,7 +4,6 @@ import * as bcrypt from 'bcrypt';
 import { IdentityRepository } from '../identity/IdentityRepository';
 import { IIdentity } from 'src/models/identity';
 import { JwtService } from '@nestjs/jwt';
-import { audit } from 'rxjs';
 import { AuthValidation } from './auth.validation';
 
 
@@ -54,7 +53,7 @@ export class AuthService {
     if (!identity) {
       console.log('error')
     }
-    console.log('identity',identity);
+    
     const isPasswordValid = await bcrypt.compare(body.password, identity.password);
     if (!isPasswordValid) {
       throw new BadRequestException('Password does not match please try again')
