@@ -14,7 +14,7 @@ lerna-debug.log*
 
 # Environment files
 /src/environment/env.ts
-
+.env
 # OS
 .DS_Store
 

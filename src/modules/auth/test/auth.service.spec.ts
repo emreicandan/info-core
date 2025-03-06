@@ -4,7 +4,7 @@ import { UserService } from "../../user/user.service";
 import { IdentityRepository } from "../../identity/IdentityRepository";
 import { JwtService } from "@nestjs/jwt";
 import { AuthValidation } from "../auth.validation";
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { IUser } from "src/models/user";
 import { IIdentity } from "src/models/identity";
 
@@ -85,7 +85,7 @@ describe('AuthService', () => {
             role: 'user',
         };
 
-        jest.spyOn(bcrypt, 'hash').mockResolvedValue('hashedPassword');
+        jest.spyOn(bcrypt, 'hash' as any).mockResolvedValue('hashedPassword');
         jest.spyOn(authValidation, 'isExistsIdentity').mockResolvedValue(null);
         jest.spyOn(userService, 'insert').mockResolvedValue({
             _id: '123',
@@ -130,7 +130,7 @@ describe('AuthService', () => {
         };
 
         jest.spyOn(identityRepository, 'getAll').mockResolvedValue([mockIdentity as IIdentity]);
-        jest.spyOn(bcrypt, 'compare').mockResolvedValue(true);
+        jest.spyOn(bcrypt, 'compare' as any).mockResolvedValue(true);
 
         const result = await authService.login(mockUserCredentials);
 
