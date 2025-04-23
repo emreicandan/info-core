@@ -12,7 +12,7 @@ export class GeminiScheduler {
         private readonly mailer: MailService
     ) { }
 
-    @Cron(CronExpression.EVERY_MINUTE)
+    @Cron(CronExpression.EVERY_DAY_AT_10AM)
     async handleScheduledPropmt() {
         const date = new Date();
         const prompt = `${date.setDate(date.getDay() - 1)} Bugüne özel kripto piyasasındaki önemli gelişmeleri verirmisin`;
