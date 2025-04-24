@@ -9,6 +9,6 @@ export default {
     GOOGLE_STORAGE_BUCKET_NAME : process.env.GOOGLE_STORAGE_BUCKET_NAME || '',
     GOOGLE_API_KEY : process.env.GOOGLE_API_KEY || '',
     GOOGLE_PROJECT_ID : process.env.GOOGLE_PROJECT_ID || '',
-    PROJECT_MAIL :  process.env.PROJECT_MAIL,
-    PROJECT_PASSWORD : process.env.PROJECT_PASSWORD
+    PROJECT_MAIL :  process.env.PROJECT_MAIL || '',
+    PROJECT_PASSWORD : process.env.PROJECT_PASSWORD || '',
 };
