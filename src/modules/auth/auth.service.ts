@@ -1,17 +1,17 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcryptjs';
-import { IdentityRepository } from '../identity/IdentityRepository';
 import { IIdentity } from 'src/models/identity';
 import { JwtService } from '@nestjs/jwt';
 import { AuthValidation } from './auth.validation';
+import { IdentityService } from '../identity/identity.service';
 
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UserService,
-    private readonly identityRepository: IdentityRepository,
+    private readonly identityService: IdentityService,
     private readonly jwtService: JwtService,
     private readonly authValidation: AuthValidation
   ) { }
@@ -45,11 +45,11 @@ export class AuthService {
       role: body.role,
     };
 
-    return this.identityRepository.insert(identityData);
+    return this.identityService.insert(identityData);
   }
 
   async login(body: { email: string; password: string }) {
-    const [identity] = await this.identityRepository.getAll({ filter: { identifier: body.email } , relation: ['user']});
+    const [identity] = await this.identityService.getAll({ filter: { identifier: body.email } , relation: ['user']});
     if (!identity) {
       console.log('error')
     }
